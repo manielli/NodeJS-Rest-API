@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const methodOverride = require('method-override');
 const movies = require('./controllers/moviesController');
 
 app.set('view engine', 'ejs');
@@ -11,13 +10,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
-
-// app.use(methodOverride((req, res) => {
-//     if (req.body && req.body._method) {
-//         const method = req.body._method;
-//         return method;
-//     }
-// }));
 
 app.post('/api/v1/movies', (req, res) => {
     const { title, released } = req.body;
