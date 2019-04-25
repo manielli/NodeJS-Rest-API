@@ -2,7 +2,8 @@ const knex = require('../db/db');
 
 const create = (title, released) => 
     knex('movies')
-        .insert({title, released});
+        .insert({title, released})
+        .returning('*');
 
 const list = () => 
     knex('movies')
@@ -12,7 +13,7 @@ const show = (id) =>
     knex('movies')
         .where({ id });
 
-const update = () => 
+const update = (id, { title, released }) => 
     knex('movies')
         .update({ title, released })
         .where({ id });

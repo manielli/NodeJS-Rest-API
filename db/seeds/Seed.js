@@ -7,7 +7,7 @@ exports.seed = function (knex) {
             const movies = Array.from({ length: 25 }).map(() => {
                 return {
                     title: faker.lorem.word(),
-                    released: faker.date.past()
+                    released: Math.floor(Math.random() * 120 + 1900)
                 };
             });
 
