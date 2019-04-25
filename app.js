@@ -2,6 +2,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const methodOverride = require('method-override');
+const movies = require('./db/db');
+const list = require('./db/db');
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -14,6 +16,12 @@ app.use(methodOverride((req, res) => {
         return method;
     }
 }));
+
+app.get('/api/v1/movies', (req, res) => {
+    movies
+        .list()
+        .then(data => res.json(data));
+});
 
 const PORT = 3000;
 const HOST = 'localhost';
