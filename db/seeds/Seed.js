@@ -6,7 +6,7 @@ exports.seed = function (knex) {
         .then(() => {
             const movies = Array.from({ length: 25 }).map(() => {
                 return {
-                    title: faker.space.planet(),
+                    title: faker.lorem.word(),
                     released: faker.date.past()
                 };
             });

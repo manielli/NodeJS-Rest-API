@@ -5,6 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon -w '*.js' -x node app.js",
+    "db:create": "createdb --echo rest_api",
+    "db:drop": "dropdb --if-exists --echo rest_api",
+    "db:migrate": "knex migrate:latest",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
